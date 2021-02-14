@@ -8,31 +8,43 @@ class ListNode:
          return str(self.val)
 
 class Solution:
-    def addTwoNumbers(self, l1, l2):
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode):
 
-        def get_node_value(l, number):
-            try:
-                return l[number].val
-            except IndexError:
-                return 0
+        node1 = l1
+        node2 = l2
+        empt = ListNode(val=0, next=None)
 
-        max_len = max(len(l1), len(l2))
+        prev = 0
 
-        result = [ListNode() for _ in range(max_len + 1)]
-        for number in range(max_len):
+        result = list()
+
+        while not result or node1 or node2 or prev == 1:
+
+            if node1:
+                s1 = node1.val
+                node1 = node1.next
+            else:
+                s1 = 0
+
+            if node2:
+                s2 = node2.val
+                node2 = node2.next
+            else:
+                s2 = 0
+
+            s = (s1 + s2 + prev)
+            result.append(ListNode(val=s % 10))
+            if s >= 10:
+                prev = 1
+            else:
+                prev = 0
+
+
+
+
+        for number in range(len(result) - 1):
             result[number].next = result[number + 1]
 
-        for num, node in enumerate(result):
-
-            s = get_node_value(l1, num) + get_node_value(l2, num)
-            if s + node.val < 10:
-                node.val += s
-            else:
-                node.val = (node.val + s) % 10
-                node.next.val += 1
-
-        if result[-1].val == 0:
-            result.pop()
 
         return result
 
@@ -40,8 +52,9 @@ class Solution:
 
 
 if __name__ == '__main__':
-    l1 = [9,9,9,9,9,9,9]
-    l2 = [9,9,9,9]
+
+    l1 = [3, 5]
+    l2 = [4]
 
     list_array1 = [ListNode(val=i) for i in l1]
     for number in range(len(list_array1) - 1):
@@ -52,4 +65,4 @@ if __name__ == '__main__':
         list_array2[number].next = list_array2[number + 1]
 
     result = Solution()
-    print(result.addTwoNumbers(list_array1, list_array2))
+    print(result.addTwoNumbers(list_array1[0], list_array2[0]))
