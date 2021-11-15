@@ -12,7 +12,7 @@ __Note__:
 1. A Sudoku board (partially filled) could be valid but is not necessarily solvable.
 2. Only the filled cells need to be validated according to the mentioned rules.
 
-![example1] (./images/example1.png) 
+![example1] (https://github.com/la-strole/leetcode/blob/master/Valid%20Sudoku/images/example1.png) 
 
 Example 1:
 
