@@ -66,6 +66,53 @@ def isValidSudoku(board) -> bool:
     return True
 
 
+def isValidSudoku_better(board) -> bool:
+    """
+    Create 3 dictionaries, every dictionary with 9 dictionaries, each with 9 values
+    :param board: sudoku list of listst
+    :return: True or False - is sudoku valid
+    """
+
+    row_dict = {}
+    column_dict = {}
+    block_dict = {}
+
+    for r in range(len(board)):
+        for c in range(len(board[0])):
+
+            value = board[r][c]
+            if value == '.':
+                continue
+
+            # search in row
+            if r not in row_dict:
+                row_dict[r] = {value: True}
+            else:
+                if value in row_dict[r]:
+                    return False
+                else:
+                    row_dict[r][value] = True
+
+            # search in column
+            if c not in column_dict:
+                column_dict[c] = {value: True}
+            else:
+                if value in column_dict[c]:
+                    return False
+                else:
+                    column_dict[c][value] = True
+
+            # search in 3x3 block
+            if (r // 3, c // 3) not in block_dict:
+                block_dict[(r // 3, c // 3)] = {value: True}
+            else:
+                if value in block_dict[(r // 3, c // 3)]:
+                    return False
+                else:
+                    block_dict[(r // 3, c // 3)][value] = True
+
+    return True
+
 if __name__ == "__main__":
     test_board = [[".", ".", ".", ".", "5", ".", ".", "1", "."],
                   [".", "4", ".", "3", ".", ".", ".", ".", "."],
@@ -78,3 +125,4 @@ if __name__ == "__main__":
                   [".", ".", "4", ".", ".", ".", ".", ".", "."]]
 
     print(f"test_board sudoku mattrix valid is {isValidSudoku(test_board)}")
+    print(f"test_board sudoku mattrix valid is {isValidSudoku_better(test_board)}")
