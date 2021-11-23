@@ -25,7 +25,7 @@ class Solution:
             # 7 = 2^31 // 10; 8 = -2^31 // 10
             if reverse_integer > max_int // 10 or (reverse_integer == max_int and last_digit > 7):
                 return 0
-            if reverse_integer < min_int // 10 or (reverse_integer == min_int and last_digit < 8):
+            if reverse_integer < min_int // 10 or (reverse_integer == min_int and last_digit < -8):
                 return 0
 
             reverse_integer = reverse_integer * 10 + last_digit
