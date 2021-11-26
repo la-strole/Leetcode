@@ -9,3 +9,7 @@ var reverseString = function(s) {
     s[j] = tmp;
   }
 };
+
+let s = ["h", "e", "l", "l", "o"];
+reverseString(s);
+console.log(s);
