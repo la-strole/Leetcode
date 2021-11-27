@@ -80,4 +80,4 @@ if __name__ == "__main__":
     tests = ("21474836460", "", "42", "-42", "+42", "  -42", "+-42", " +-42", "42somewords", "2147483648", "2147483647",
              "-2147483648", "21474836480", "-214748364862", " ", "  0000000000012345678", "   -115579378e25")
     for test in tests:
-        print(f"number from {test} is {Solution().myAtoi_v2(tests[-1])}")
+        print(f"number from {test} is {Solution().myAtoi_v2(test)}")
