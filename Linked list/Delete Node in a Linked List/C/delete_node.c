@@ -11,7 +11,7 @@ void deleteNode(struct ListNode* node) {
     node.val = victim.val;
     node->next = victim->next;
 
-    
+    free(victim);
 
 
 }
